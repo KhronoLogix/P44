@@ -27,6 +27,7 @@ public class Main {
             input.nextLine(); // consume newline
 
             switch (userIntInput) {
+                //i switched to switch case but it just doesnt hit the same </3
                 case 1 -> add();
                 case 2 -> remove();
                 case 3 -> update();
@@ -148,16 +149,12 @@ public class Main {
     static void saveAndLoad() throws IOException {
         ObjectMapper map = new ObjectMapper();
         File file = new File("data.json");
-        List<Task> loaded = map.readValue(file, new TypeReference<>() {});
-
-        taskLi.addAll(loaded);
-
+        List<Task> loaded = map.readValue(file, new TypeReference<>() {})
+        taskLi.addAll(loaded);        
         // Save current tasks
         map.writeValue(file, taskLi);
         System.out.println("Saved current tasks to data.json.");
-
-        // Load tasks back from file
-
+        // Load tasks back from fil
         System.out.println("Loaded tasks:");
         for (Task t : loaded) {
             t.displayTask();
